@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Snap Fashion — Digital Fashion House</title>
+  <!-- Google Fonts + Tailwind + Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,200;14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * { font-family: 'Inter', sans-serif; }
+    .serif { font-family: 'Cormorant Garamond', serif; }
+    body { background-color: #0a0908; scroll-behavior: smooth; }
+    /* cinematic gradient overlays */
+    .cinematic-overlay {
+      background: linear-gradient(120deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.8) 100%);
+    }
+    .gold-glow {
+      text-shadow: 0 0 12px rgba(212, 175, 55, 0.5);
+    }
+    .card-hover {
+      transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    }
+    .card-hover:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 35px -12px rgba(0,0,0,0.6), 0 0 0 1px rgba(212,175,55,0.2);
+    }
+    .vip-badge {
+      background: linear-gradient(135deg, #D4AF37 0%, #B88A2A 100%);
+    }
+    .size-scarce {
+      animation: pulseSoft 1.5s infinite;
+    }
+    @keyframes pulseSoft {
+      0% { box-shadow: 0 0 0 0 rgba(212,175,55,0.4); }
+      70% { box-shadow: 0 0 0 6px rgba(212,175,55,0); }
+      100% { box-shadow: 0 0 0 0 rgba(212,175,55,0); }
+    }
+    .scrollbar-hide::-webkit-scrollbar { display: none; }
+    .bg-luxury-pattern {
+      background-image: radial-gradient(circle at 10% 20%, rgba(212,175,55,0.03) 2%, transparent 2.5%);
+      background-size: 28px 28px;
+    }
+    button:active { transform: scale(0.97); }
+    .video-bg {
+      object-fit: cover;
+      height: 100%;
+      width: 100%;
+    }
+  </style>
+</head>
+<body class="text-white bg-luxury-pattern">
+
+  <!-- CINEMATIC HERO with video BG -->
+  <section class="relative h-screen w-full overflow-hidden">
+    <video class="absolute top-0 left-0 w-full h-full object-cover" autoplay loop muted playsinline>
+      <source src="https://cdn.pixabay.com/video/2023/06/26/169572-837085199_large.mp4" type="video/mp4">
+    </video>
+    <div class="cinematic-overlay absolute inset-0"></div>
+    <div class="relative z-10 flex flex-col justify-center items-start h-full px-6 md:px-16 max-w-7xl mx-auto">
+      <div class="animate-fade-in-up" style="animation: fadeInUp 1s ease-out;">
+        <span class="text-amber-300 tracking-[0.3em] text-sm uppercase border-l-4 border-amber-400 pl-4">SS25 — The Alchemy</span>
+        <h1 class="serif text-6xl md:text-8xl font-bold mt-6 leading-tight">Snap Fashion</h1>
+        <p class="text-xl md:text-2xl text-gray-200 max-w-xl mt-4 font-light">Where garments become mythology. Limited drops, AI curation, and the future of couture.</p>
+        <div class="flex gap-5 mt-10">
+          <button onclick="document.getElementById('drops').scrollIntoView({behavior:'smooth'})" class="bg-amber-700 hover:bg-amber-600 text-white px-8 py-3 rounded-full font-semibold tracking-wide transition shadow-xl">Explore Drop →</button>
+          <button onclick="document.getElementById('lookbook').scrollIntoView({behavior:'smooth'})" class="border border-white/40 hover:border-amber-400 px-8 py-3 rounded-full backdrop-blur-sm">Lookbook</button>
+        </div>
+      </div>
+    </div>
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce"><i class="fas fa-chevron-down text-amber-300 text-2xl"></i></div>
+  </section>
+
+  <!-- MAIN APP (DYNAMIC) -->
+  <main class="max-w-7xl mx-auto px-4 md:px-8 py-12 space-y-24">
+    
+    <!-- LOOKBOOK (interactive collections) -->
+    <div id="lookbook" class="scroll-mt-20">
+      <div class="flex justify-between items-end border-b border-amber-700/30 pb-4 mb-8">
+        <h2 class="serif text-4xl md:text-5xl font-bold">Interactive Lookbook</h2>
+        <span class="text-amber-300 text-sm">︎︎limited edition editorial</span>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="group relative overflow-hidden rounded-xl cursor-pointer" onclick="alert('Editorial 01: Silk Road mirage')">
+          <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=600&auto=format" class="w-full h-80 object-cover transition duration-700 group-hover:scale-105" alt="lookbook">
+          <div class="absolute inset-0 bg-black/40 flex items-end p-4 opacity-0 group-hover:opacity-100 transition">Velvet Oracle</div>
+        </div>
+        <div class="group relative overflow-hidden rounded-xl cursor-pointer" onclick="alert('Editorial 02: Golden hour couture')">
+          <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=600&auto=format" class="w-full h-80 object-cover transition duration-700 group-hover:scale-105" alt="lookbook">
+          <div class="absolute inset-0 bg-black/40 flex items-end p-4 opacity-0 group-hover:opacity-100 transition">Gilded Phantom</div>
+        </div>
+        <div class="group relative overflow-hidden rounded-xl cursor-pointer" onclick="alert('Editorial 03: Afterdark mirage')">
+          <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=600&auto=format" class="w-full h-80 object-cover transition duration-700 group-hover:scale-105" alt="lookbook">
+          <div class="absolute inset-0 bg-black/40 flex items-end p-4 opacity-0 group-hover:opacity-100 transition">Noir Rhapsody</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DROP SECTION (current drop + countdown + size scarcity) -->
+    <div id="drops" class="scroll-mt-20">
+      <div class="flex flex-wrap justify-between items-end border-b border-amber-700/30 pb-4 mb-8">
+        <h2 class="serif text-4xl md:text-5xl font-bold">⚡ Current Drop: <span class="text-amber-300">MIDNIGHT ECHO</span></h2>
+        <div id="countdownTimer" class="bg-black/50 backdrop-blur px-5 py-2 rounded-full text-amber-200 font-mono text-xl border border-amber-500/40"></div>
+      </div>
+      <div id="activeProductsContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+    </div>
+
+    <!-- UPCOMING DROP (Pre-order + countdown VIP early access teaser) -->
+    <div class="bg-black/40 rounded-2xl p-6 border border-amber-800/40 backdrop-blur-sm">
+      <div class="flex flex-wrap justify-between items-center">
+        <div><h3 class="serif text-3xl font-bold">🌙 Upcoming Collection: <span class="text-amber-300">Elysian Veil</span></h3>
+        <p class="text-gray-300">Pre-order now — limited units worldwide</p></div>
+        <div id="preorderCountdown" class="bg-amber-900/30 px-4 py-2 rounded-full text-amber-200 font-bold"></div>
+      </div>
+      <div id="preorderProducts" class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8"></div>
+    </div>
+
+    <!-- VIP EARLY DROP (only visible if logged VIP) -->
+    <div id="vipExclusiveSection" class="hidden bg-gradient-to-r from-amber-900/20 to-black/70 rounded-2xl p-6 border-l-8 border-amber-500">
+      <div class="flex items-center gap-3"><i class="fas fa-crown text-amber-400 text-2xl"></i><h3 class="serif text-3xl font-bold">✦ VIP Sanctum — Early Access Drop ✦</h3></div>
+      <p class="text-gray-200 mt-1">Limited to verified Stone & Shadow members. One size left.</p>
+      <div id="vipProductCard" class="mt-4 flex flex-wrap gap-6 items-center"></div>
+    </div>
+    
+    <!-- AI STYLIST + OUTFIT BUILDER section -->
+    <div class="grid lg:grid-cols-2 gap-8">
+      <div class="bg-neutral-900/70 rounded-2xl p-6 border border-neutral-700">
+        <div class="flex items-center gap-3"><i class="fas fa-robot text-amber-400 text-2xl"></i><h3 class="serif text-3xl font-bold">AI Stylist</h3></div>
+        <p class="text-gray-300 text-sm">Neural curation from Midnight Echo collection</p>
+        <button id="aiSuggestBtn" class="mt-4 bg-amber-800 px-6 py-2 rounded-full hover:bg-amber-700 transition">✨ Suggest my outfit</button>
+        <div id="aiSuggestionResult" class="mt-6 p-4 bg-black/40 rounded-xl border border-amber-500/30 text-amber-100"></div>
+      </div>
+      <div class="bg-neutral-900/70 rounded-2xl p-6 border border-neutral-700">
+        <div class="flex items-center gap-3"><i class="fas fa-tshirt text-amber-400 text-2xl"></i><h3 class="serif text-3xl font-bold">Outfit Builder</h3></div>
+        <div class="grid grid-cols-3 gap-2 mt-3 text-sm">
+          <select id="topSelect" class="bg-black border border-amber-700 rounded p-2"></select>
+          <select id="bottomSelect" class="bg-black border border-amber-700 rounded p-2"></select>
+          <select id="accessorySelect" class="bg-black border border-amber-700 rounded p-2"></select>
+        </div>
+        <button id="buildOutfitBtn" class="mt-4 w-full bg-white/10 hover:bg-white/20 py-2 rounded-full transition">Mix & Match</button>
+        <div id="outfitPreview" class="mt-4 text-center text-amber-200 italic"></div>
+      </div>
+    </div>
+
+    <!-- ACCOUNT / USER LAYER + purchase history -->
+    <div class="bg-black/50 rounded-xl p-6 backdrop-blur-sm border border-amber-800/30">
+      <div class="flex flex-wrap justify-between gap-4 items-center">
+        <h3 class="serif text-3xl"><i class="far fa-user-circle"></i> Atelier Account</h3>
+        <div id="authPanel" class="flex gap-3"></div>
+      </div>
+      <div id="userDashboard" class="mt-6 hidden">
+        <p><span id="userNameDisplay"></span> <span id="vipStatusBadge" class="ml-2 text-xs px-2 py-1 rounded-full bg-amber-700"></span></p>
+        <div class="mt-4"><h4 class="font-bold">Purchase History</h4><ul id="purchaseHistoryList" class="list-disc pl-5 text-sm text-gray-300 max-h-32 overflow-y-auto"></ul></div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="text-center py-8 text-gray-400 text-xs border-t border-amber-900/30 mt-20">SNAP FASHION — digital fashion house. All drops final.</footer>
+
+  <script>
+    // ---------- MOCK DATA : LUXURY DROP INVENTORY + PREORDER + VIP ----------
+    let activeDropProducts = [
+      { id: "p1", name: "Onyx Mosaic Shirt", price: 890, category: "top", img: "https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=400", sizes: [{ size: "XS", stock: 1 }, { size: "S", stock: 2 }, { size: "M", stock: 5 }, { size: "L", stock: 0 }, { size: "XL", stock: 3 }] },
+      { id: "p2", name: "Gilded Serpent Trousers", price: 1250, category: "bottom", img: "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=400", sizes: [{ size: "XS", stock: 0 }, { size: "S", stock: 2 }, { size: "M", stock: 1 }, { size: "L", stock: 4 }, { size: "XL", stock: 0 }] },
+      { id: "p3", name: "Couture Kinetic Cape", price: 2450, category: "accessory", img: "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=400", sizes: [{ size: "ONE", stock: 2 }] }
+    ];
+    // upcoming pre-order products
+    let preorderProducts = [
+      { id: "pre1", name: "Aether Silk Robe", price: 1890, img: "https://images.unsplash.com/photo-1564257631407-4deb1f99d992?w=400", sizes: ["S","M","L"], releaseDate: "2025-05-20T00:00:00" },
+      { id: "pre2", name: "Fractal Combat Boot", price: 990, img: "https://images.unsplash.com/photo-1605348532760-2693e4c2e212?w=400", sizes: ["38","39","40","41"] }
+    ];
+    // VIP exclusive product (early drop)
+    const vipProduct = { id: "vip1", name: "Phoenix Ascent Jacket (VIP early)", price: 3800, img: "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=200", stockLeft: 1 };
+
+    // Global state
+    let users = JSON.parse(localStorage.getItem("snap_users")) || [];
+    let currentUser = JSON.parse(localStorage.getItem("snap_current")) || null;
+    let cart = []; // for active drop purchase
+    let globalPurchaseHistory = JSON.parse(localStorage.getItem("snap_purchases")) || []; // store per user: {userId, items, timestamp, type, preorder?}
+    
+    // helper: save users & session
+    function saveUsers() { localStorage.setItem("snap_users", JSON.stringify(users)); }
+    function saveSession() { localStorage.setItem("snap_current", JSON.stringify(currentUser)); }
+    function savePurchaseHistory() { localStorage.setItem("snap_purchases", JSON.stringify(globalPurchaseHistory)); }
+    function persistInventory() { localStorage.setItem("snap_activeProducts", JSON.stringify(activeDropProducts)); }
+    function loadInventory() {
+      let saved = localStorage.getItem("snap_activeProducts");
+      if(saved) activeDropProducts = JSON.parse(saved);
+      else persistInventory();
+    }
+    loadInventory();
+
+    // helper: update size scarcity render
+    function renderActiveDrop() {
+      const container = document.getElementById("activeProductsContainer");
+      if(!container) return;
+      container.innerHTML = activeDropProducts.map(prod => {
+        const sizeButtons = prod.sizes.map(sz => {
+          let scarceClass = sz.stock > 0 && sz.stock <= 2 ? "size-scarce border-amber-400 bg-amber-900/40" : "border-gray-600";
+          let leftText = sz.stock > 0 ? (sz.stock <=2 ? `⚠️ Only ${sz.stock} left` : `${sz.stock} in stock`) : "Sold out";
+          return `<div class="flex flex-col items-center"><button class="size-btn px-3 py-1 m-1 rounded border ${scarceClass} text-xs" data-prod="${prod.id}" data-size="${sz.size}" data-stock="${sz.stock}">${sz.size}</button><span class="text-[10px] text-gray-400">${leftText}</span></div>`;
+        }).join('');
+        return `<div class="bg-black/60 rounded-xl overflow-hidden card-hover border border-amber-900/40">
+          <img src="${prod.img}" class="h-64 w-full object-cover">
+          <div class="p-4"><div class="flex justify-between"><h3 class="font-bold text-xl">${prod.name}</h3><span class="text-amber-300">$${prod.price}</span></div>
+          <div class="flex flex-wrap gap-1 mt-3">${sizeButtons}</div>
+          <button class="buy-now-btn w-full mt-4 bg-amber-700 hover:bg-amber-600 py-2 rounded" data-product='${JSON.stringify(prod)}'>Add to Cart & Checkout</button></div>
+        </div>`;
+      }).join('');
+      attachProductEvents();
+    }
+
+    function attachProductEvents() {
+      document.querySelectorAll(".buy-now-btn").forEach(btn => {
+        btn.addEventListener("click", (e) => {
+          if(!currentUser) { alert("LOGIN REQUIRED: please create or login account first."); return; }
+          const prodData = JSON.parse(btn.getAttribute("data-product"));
+          // need size selection from that product's active size button? we pick first available with stock? Better use modal: simplified let's ask size
+          let selectedSize = prompt(`Select size for ${prodData.name}\nAvailable: ${prodData.sizes.filter(s=>s.stock>0).map(s=>s.size+`(${s.stock})`).join(", ")}`);
+          if(!selectedSize) return;
+          const sizeObj = prodData.sizes.find(s=>s.size === selectedSize);
+          if(!sizeObj || sizeObj.stock <=0) { alert("Size out of stock"); return; }
+          // update stock globally
+          sizeObj.stock -= 1;
+          // record purchase history
+          const orderItem = { productId: prodData.id, name: prodData.name, size: selectedSize, price: prodData.price, timestamp: new Date().toISOString(), type: "drop_purchase" };
+          globalPurchaseHistory.push({ userId: currentUser.id, items: [orderItem], date: new Date().toISOString() });
+          savePurchaseHistory();
+          persistInventory();
+          renderActiveDrop();
+          renderUserDashboard();
+          alert(`Purchased ${prodData.name} (${selectedSize})! Stock updated.`);
+          // trigger scarcity refresh
+        });
+      });
+      // add size selectors quick but order handled above
+    }
+
+    // Pre-order handling
+    function renderPreorder() {
+      const container = document.getElementById("preorderProducts");
+      if(!container) return;
+      container.innerHTML = preorderProducts.map(prod => `<div class="flex bg-neutral-800/60 rounded-lg p-3 gap-4"><img src="${prod.img}" class="w-24 h-24 object-cover rounded"><div><p class="font-bold">${prod.name}</p><p class="text-amber-300">$${prod.price}</p><button class="preorderBtn mt-2 bg-amber-800/80 px-4 py-1 rounded text-sm" data-prod='${JSON.stringify(prod)}'>Pre-order now</button></div></div>`).join('');
+      document.querySelectorAll(".preorderBtn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          if(!currentUser) { alert("Sign in to pre-order"); return; }
+          const prod = JSON.parse(btn.getAttribute("data-prod"));
+          globalPurchaseHistory.push({ userId: currentUser.id, items: [{ name: prod.name, price: prod.price, type: "preorder" }], date: new Date().toISOString(), isPreorder: true });
+          savePurchaseHistory();
+          renderUserDashboard();
+          alert(`${prod.name} pre-ordered! You'll be notified before release.`);
+        });
+      });
+    }
+
+    // VIP early drop visibility + render
+    function renderVIPSection() {
+      const section = document.getElementById("vipExclusiveSection");
+      const vipContainer = document.getElementById("vipProductCard");
+      if(currentUser && currentUser.isVIP) {
+        section.classList.remove("hidden");
+        vipContainer.innerHTML = `<div class="flex gap-4 items-center bg-black/40 p-3 rounded"><img src="${vipProduct.img}" class="w-20 h-20 rounded"><div><p class="font-bold">${vipProduct.name}</p><p class="text-amber-400">$${vipProduct.price}</p><p class="text-red-300 text-xs">Only ${vipProduct.stockLeft} left</p><button id="vipPurchaseBtn" class="mt-2 bg-gradient-to-r from-amber-600 to-amber-800 px-4 py-1 rounded text-sm">Secure VIP drop</button></div></div>`;
+        document.getElementById("vipPurchaseBtn")?.addEventListener("click", () => {
+          if(vipProduct.stockLeft <=0) { alert("VIP piece gone"); return; }
+          vipProduct.stockLeft -=1;
+          globalPurchaseHistory.push({ userId: currentUser.id, items: [{ name: vipProduct.name, price: vipProduct.price, type: "VIP early drop" }], date: new Date().toISOString() });
+          savePurchaseHistory();
+          renderVIPSection();
+          renderUserDashboard();
+          alert("VIP exclusive secured. Archival access granted.");
+        });
+      } else {
+        section.classList.add("hidden");
+      }
+    }
+
+    // Countdown timers: current drop ends in 3 days, preorder in 5
+    function updateCountdowns() {
+      const dropEnd = new Date(); dropEnd.setDate(dropEnd.getDate() + 3); dropEnd.setHours(23,59,59);
+      const preorderRelease = new Date(); preorderRelease.setDate(preorderRelease.getDate() + 7);
+      function formatDiff(endDate) {
+        let diff = endDate - new Date();
+        if(diff<=0) return "Drop available now";
+        let days = Math.floor(diff/(1000*60*60*24));
+        let hrs = Math.floor((diff/(1000*60*60))%24);
+        let mins = Math.floor((diff/60000)%60);
+        return `${days}d ${hrs}h ${mins}m`;
+      }
+      const timerDiv = document.getElementById("countdownTimer");
+      if(timerDiv) timerDiv.innerText = `⏳ Drop ends in ${formatDiff(dropEnd)}`;
+      const preTimer = document.getElementById("preorderCountdown");
+      if(preTimer) preTimer.innerText = `Pre-order closes in ${formatDiff(preorderRelease)}`;
+    }
+    setInterval(updateCountdowns, 1000);
+    
+    // User accounts + VIP demo (VIP user = user with vip flag or email includes vip)
+    function initAuth() {
+      const panel = document.getElementById("authPanel");
+      if(currentUser) {
+        panel.innerHTML = `<span class="text-amber-200">✧ ${currentUser.username}</span> <button id="logoutBtn" class="bg-white/10 px-3 py-1 rounded-full">Logout</button>`;
+        document.getElementById("logoutBtn")?.addEventListener("click", () => { currentUser = null; saveSession(); location.reload(); });
+        document.getElementById("userDashboard").classList.remove("hidden");
+        renderUserDashboard();
+      } else {
+        panel.innerHTML = `<button id="showLoginBtn" class="px-4 py-1 border border-amber-500 rounded-full">Sign in / Register</button>`;
+        document.getElementById("showLoginBtn")?.addEventListener("click", () => { showAuthModal(); });
+        document.getElementById("userDashboard").classList.add("hidden");
+      }
+      renderVIPSection();
+    }
+    
+    function showAuthModal() {
+      let action = prompt("Snap Atelier: 1 - Login  |  2 - Register (VIP upgrade via purchase or admin note)");
+      if(action === "1") {
+        let un = prompt("Username");
+        let pwd = prompt("Password (demo: any)");
+        let user = users.find(u=>u.username===un);
+        if(user) { currentUser = user; saveSession(); alert(`Welcome back, ${un}`); location.reload(); }
+        else alert("User not found");
+      } else if (action === "2") {
+        let newName = prompt("Create username");
+        if(newName && !users.find(u=>u.username===newName)) {
+          let isVIP = confirm("Activate VIP? (Demo: Yes for early drops)");
+          let newUser = { id: Date.now(), username: newName, isVIP: isVIP, purchaseHistoryIds: [] };
+          users.push(newUser);
+          saveUsers();
+          currentUser = newUser;
+          saveSession();
+          alert(`Welcome ${newName} ${isVIP ? "✦ VIP ACCESS ✦" : ""} `);
+          location.reload();
+        } else alert("Exists or invalid");
+      }
+    }
+    
+    function renderUserDashboard() {
+      if(!currentUser) return;
+      document.getElementById("userNameDisplay").innerHTML = `👤 ${currentUser.username}`;
+      let vipBadge = document.getElementById("vipStatusBadge");
+      if(currentUser.isVIP) vipBadge.innerHTML = "👑 VIP Status • Early drops unlocked";
+      else vipBadge.innerHTML = "Standard Member • complete a purchase to ascend";
+      const userPurchases = globalPurchaseHistory.filter(entry => entry.userId === currentUser.id);
+      const historyList = document.getElementById("purchaseHistoryList");
+      if(userPurchases.length===0) historyList.innerHTML = "<li>No purchases yet. Acquire from current drop.</li>";
+      else historyList.innerHTML = userPurchases.map(p => `<li>${new Date(p.date).toLocaleDateString()} — ${p.items.map(i=>i.name).join(", ")} ($${p.items.reduce((a,b)=>a+b.price,0)})</li>`).join('');
+      // auto VIP if purchase total > 2000? but we already have, but to match concept
+      if(!currentUser.isVIP && userPurchases.length>=1) {
+        currentUser.isVIP = true;
+        saveUsers(); saveSession();
+        renderVIPSection();
+        vipBadge.innerHTML = "👑 VIP Status • Early drops unlocked";
+        alert("Congratulations! You achieved VIP status – early drops now visible.");
+      }
+    }
+    
+    // AI Stylist: suggest smart outfit from active products categories
+    function aiSuggestion() {
+      const tops = activeDropProducts.filter(p=>p.category==="top");
+      const bottoms = activeDropProducts.filter(p=>p.category==="bottom");
+      const accessories = activeDropProducts.filter(p=>p.category==="accessory");
+      let topItem = tops.length? tops[0].name : "Onyx Mosaic";
+      let bottomItem = bottoms.length? bottoms[0].name : "Gilded Trousers";
+      let accessoryItem = accessories.length? accessories[0].name : "Couture Cape";
+      document.getElementById("aiSuggestionResult").innerHTML = `✨ Neural Look: <strong>${topItem}</strong> + <strong>${bottomItem}</strong> with <strong>${accessoryItem}</strong>. ✨<br> <span class="text-xs">Recommended by Snap AI — 'Iconic silhouette'</span>`;
+    }
+    document.getElementById("aiSuggestBtn")?.addEventListener("click", aiSuggestion);
+    
+    // Outfit builder: populate dropdown from active products
+    function populateBuilder() {
+      const topSelect = document.getElementById("topSelect");
+      const bottomSelect = document.getElementById("bottomSelect");
+      const accSelect = document.getElementById("accessorySelect");
+      if(topSelect) {
+        topSelect.innerHTML = `<option>-- Select Top --</option>` + activeDropProducts.filter(p=>p.category==="top").map(p=>`<option value="${p.name}">${p.name} ($${p.price})</option>`).join('');
+        bottomSelect.innerHTML = `<option>-- Select Bottom --</option>` + activeDropProducts.filter(p=>p.category==="bottom").map(p=>`<option value="${p.name}">${p.name} ($${p.price})</option>`).join('');
+        accSelect.innerHTML = `<option>-- Accessory --</option>` + activeDropProducts.filter(p=>p.category==="accessory").map(p=>`<option value="${p.name}">${p.name} ($${p.price})</option>`).join('');
+      }
+    }
+    document.getElementById("buildOutfitBtn")?.addEventListener("click", () => {
+      const top = document.getElementById("topSelect").value;
+      const bottom = document.getElementById("bottomSelect").value;
+      const acc = document.getElementById("accessorySelect").value;
+      if(top.includes("Select") && bottom.includes("Select")) { document.getElementById("outfitPreview").innerHTML = "⚠️ choose at least a top & bottom to manifest fit."; return; }
+      document.getElementById("outfitPreview").innerHTML = `👔 Lookbook Vision: ${top !== "-- Select Top --" ? top : "any top"} + ${bottom !== "-- Select Bottom --" ? bottom : "luxe slack"} + accent: ${acc !== "-- Accessory --" ? acc : "none"}.<br> <span class="text-amber-400 text-sm">✦ timeless avant-garde ✦</span>`;
+    });
+    
+    // Refresh all dynamic UI
+    function refreshAll() {
+      renderActiveDrop();
+      renderPreorder();
+      initAuth();
+      renderVIPSection();
+      populateBuilder();
+      updateCountdowns();
+    }
+    refreshAll();
+    // additional scarcity front: show stock on each size via rendered!
+    window.addEventListener("load", () => {
+      document.querySelectorAll(".video-bg").forEach(v=>{});
+    });
+  </script>
+  <style>
+    @keyframes fadeInUp { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:translateY(0); } }
+    .animate-fade-in-up { animation: fadeInUp 0.8s ease forwards; }
+  </style>
+</body>
+</html>
